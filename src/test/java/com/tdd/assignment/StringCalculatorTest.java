@@ -2,6 +2,8 @@ package com.tdd.assignment;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,7 +12,7 @@ public class StringCalculatorTest {
 	private StringCalculator calculator;
 
 	private static int addMethodCounter = 0;
-	
+
 	@Before
 	public void setup() {
 		calculator = new StringCalculator();
@@ -62,9 +64,13 @@ public class StringCalculatorTest {
 		assertEquals(result, 6);
 	}
 
-	@Test
-	public void testAddMethodCounter() {
-		assertEquals(addMethodCounter, 0);
+	@After
+	public void countAddMethodTest() {
+		addMethodCounter += calculator.getCalledCount();
 	}
 
+	@AfterClass
+	public static void addInvocationCounter() {
+		System.out.println("The add method was invoked " + addMethodCounter + " times.");
+	}
 }

@@ -111,7 +111,7 @@ public class StringCalculatorTest {
 		int result = calculator.add("//[...][;;;]\n1...2;;;-3");
 		assertEquals("Multiple Delimiter Test", result, 6);
 	}
-	
+
 	@After
 	public void countAddMethodTest() {
 		addMethodCounter += calculator.getCalledCount();

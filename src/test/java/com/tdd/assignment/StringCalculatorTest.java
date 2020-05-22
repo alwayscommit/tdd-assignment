@@ -91,6 +91,12 @@ public class StringCalculatorTest {
 		assertEquals("Any Length Delimiter Test", result, 6);
 	}
 	
+	@Test
+	public void anyLengthMultipleDelimiterTest() {
+		int result = calculator.add("//[.][;]\n1.2;3");
+		assertEquals("Any Length Delimiter Test", result, 6);
+	}
+	
 	@After
 	public void countAddMethodTest() {
 		addMethodCounter += calculator.getCalledCount();

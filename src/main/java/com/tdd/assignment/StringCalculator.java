@@ -7,6 +7,8 @@ import java.util.stream.IntStream;
 public class StringCalculator {
 
 	private static final String BASIC_DELIMITER = ",|\n";
+	private static final String ANY_LENGTH_DELIMITER_IDENTIFIER = "//[";
+	private static final String CUSTOM_DELIMITER_IDENTIFIER = "//";
 	private int count = 0;
 
 	public Integer add(String numbers) {
@@ -18,7 +20,7 @@ public class StringCalculator {
 		// Get Delimiter
 		String[] delimiterAndNumberArray = numbers.split("\n", 2);
 
-		if (hasInbuiltDelimiter(numbers)) { 
+		if (hasInbuiltDelimiter(numbers)) {
 			delimiterAndNumberArray = numbers.split("\n", 2);
 			String delimiter = getDelimiter(delimiterAndNumberArray[0]);
 			numbers = delimiterAndNumberArray[1];
@@ -32,7 +34,7 @@ public class StringCalculator {
 	private String getDelimiter(String delimiterPart) {
 
 		// delimiter string starts with //[
-		if (delimiterPart.startsWith("//[")) {
+		if (delimiterPart.startsWith(ANY_LENGTH_DELIMITER_IDENTIFIER)) {
 			return delimiterPart.substring(3, delimiterPart.length() - 1);
 		} else {
 			// delimiter string starts with // only
@@ -59,7 +61,7 @@ public class StringCalculator {
 	}
 
 	private boolean hasInbuiltDelimiter(String numbers) {
-		return numbers.startsWith("//");
+		return numbers.startsWith(CUSTOM_DELIMITER_IDENTIFIER);
 	}
 
 	private IntStream getIntegers(String[] numberStringArray) {

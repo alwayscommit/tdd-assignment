@@ -13,5 +13,12 @@ public class StringCalculatorTest {
 		assertEquals(result, 0);
 	}
 	
+	@Test
+	public void nonEmptyStringTest() {
+		StringCalculator calculator = new StringCalculator();
+		int result = calculator.calculateString("2");
+		assertEquals(result, 2);
+	}
+	
 	
 }

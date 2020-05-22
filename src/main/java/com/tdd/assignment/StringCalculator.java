@@ -7,8 +7,8 @@ import java.util.stream.IntStream;
 public class StringCalculator {
 
 	private static final String BASIC_DELIMITER = ",|\n";
-	private int count=0;
-	
+	private int count = 0;
+
 	public Integer add(String numbers) {
 		count++;
 		if (numbers == null || numbers.isEmpty()) {
@@ -17,9 +17,17 @@ public class StringCalculator {
 
 		// inbuilt delimiter
 		if (hasInbuiltDelimiter(numbers)) {
+
 			// Get Delimiter
 			String[] spaceSplit = numbers.split("\n", 2);
 			String delimiter = spaceSplit[0].substring(2);
+
+			if (delimiter.startsWith("[")) {
+				// Remove the []
+				delimiter = delimiter.substring(1, delimiter.length() - 1);
+				System.out.println(delimiter);
+			}
+
 			numbers = spaceSplit[1];
 			return calculateSum(numbers, delimiter);
 		} else {
@@ -32,10 +40,10 @@ public class StringCalculator {
 		// split operation
 		String[] numberStringArray = splitNumberString(numbers, delimiter);
 
-		//check for negatives
+		// check for negatives
 		IntStream posIntStream = checkForNegatives(numberStringArray);
-		
-		//ignore number > 1000 
+
+		// ignore number > 1000
 		IntStream finaIntStream = limitMaxNumber(posIntStream);
 
 		// perform summation
@@ -55,16 +63,17 @@ public class StringCalculator {
 	}
 
 	private String[] splitNumberString(String numbers, String delimiter) {
-		return numbers.split("\\"+delimiter);
+		return numbers.split("\\" + delimiter);
 	}
-	
+
 	public int getCalledCount() {
 		return count;
 	}
-	
+
 	private IntStream checkForNegatives(String[] numberStringArray) {
-		String negativeNumbers = getIntegers(numberStringArray).filter(n -> n<0).mapToObj(integer -> Integer.toString(integer)).collect(Collectors.joining(","));
-		if(!negativeNumbers.isEmpty()) {
+		String negativeNumbers = getIntegers(numberStringArray).filter(n -> n < 0)
+				.mapToObj(integer -> Integer.toString(integer)).collect(Collectors.joining(","));
+		if (!negativeNumbers.isEmpty()) {
 			throw new UnsupportedOperationException("negatives not allowed :: " + negativeNumbers);
 		} else {
 			return getIntegers(numberStringArray);

@@ -81,7 +81,7 @@ public class StringCalculatorTest {
 
 	@Test
 	public void anyLengthDelimiterTest() {
-		int result = calculator.add("//[;;;]\n1;;;2;;;3");
+		int result = calculator.add("//;;;\n1;;;2;;;3");
 		assertEquals("Any Length Delimiter Test", result, 6);
 	}
 	

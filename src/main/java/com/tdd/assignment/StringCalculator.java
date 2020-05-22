@@ -9,10 +9,22 @@ public class StringCalculator {
 		if (numbers == null || numbers == "") {
 			return 0;
 		}
-		String[] numberStringArray = numbers.split(",");
-		IntStream intStream = Arrays.stream(numberStringArray).mapToInt(Integer::parseInt);
-		int sum = intStream.sum();
-		return sum;
+		//split operation
+		String[] numberStringArray = splitNumberString(numbers);
+		
+		//convert to int operation
+		IntStream intStream = getIntegers(numberStringArray);
+		
+		//perform summation
+		return intStream.sum();
+	}
+
+	private IntStream getIntegers(String[] numberStringArray) {
+		return Arrays.stream(numberStringArray).mapToInt(Integer::parseInt);
+	}
+
+	private String[] splitNumberString(String numbers) {
+		return numbers.split(",");
 	}
 
 }

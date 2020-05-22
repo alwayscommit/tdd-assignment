@@ -70,6 +70,15 @@ public class StringCalculatorTest {
 		assertEquals(result, 1001);
 	}
 	
+	@Test
+	public void moreThanMaxNumberTest() {
+		int result = calculator.add("//'\n1000'1'1");
+		assertEquals(result, 2);
+		
+		int result2 = calculator.add("//'\n1000'1000'1000");
+		assertEquals(result2, 0);
+	}
+
 	@After
 	public void countAddMethodTest() {
 		addMethodCounter += calculator.getCalledCount();

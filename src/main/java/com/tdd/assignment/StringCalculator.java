@@ -15,25 +15,29 @@ public class StringCalculator {
 			return 0;
 		}
 
-		// inbuilt delimiter
-		if (hasInbuiltDelimiter(numbers)) {
+		// Get Delimiter
+		String[] delimiterAndNumberArray = numbers.split("\n", 2);
 
-			// Get Delimiter
-			String[] spaceSplit = numbers.split("\n", 2);
-			String delimiter = spaceSplit[0].substring(2);
-
-			if (delimiter.startsWith("[")) {
-				// Remove the []
-				delimiter = delimiter.substring(1, delimiter.length() - 1);
-				System.out.println(delimiter);
-			}
-
-			numbers = spaceSplit[1];
+		if (hasInbuiltDelimiter(numbers)) { 
+			delimiterAndNumberArray = numbers.split("\n", 2);
+			String delimiter = getDelimiter(delimiterAndNumberArray[0]);
+			numbers = delimiterAndNumberArray[1];
 			return calculateSum(numbers, delimiter);
 		} else {
 			return calculateSum(numbers, BASIC_DELIMITER);
 		}
 
+	}
+
+	private String getDelimiter(String delimiterPart) {
+
+		// delimiter string starts with //[
+		if (delimiterPart.startsWith("//[")) {
+			return delimiterPart.substring(3, delimiterPart.length() - 1);
+		} else {
+			// delimiter string starts with // only
+			return delimiterPart.substring(2);
+		}
 	}
 
 	private Integer calculateSum(String numbers, String delimiter) {

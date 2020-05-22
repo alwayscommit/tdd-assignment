@@ -4,9 +4,12 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class StringCalculator {
+	
+	private static final String BASIC_DELIMITER = ",|\n";
+	private static final String EMPTY_STRING = "";
 
 	public Integer add(String numbers) {
-		if (numbers == null || numbers == "") {
+		if (numbers == null || numbers == EMPTY_STRING) {
 			return 0;
 		}
 		//split operation
@@ -24,7 +27,7 @@ public class StringCalculator {
 	}
 
 	private String[] splitNumberString(String numbers) {
-		return numbers.split(",|\n");
+		return numbers.split(BASIC_DELIMITER);
 	}
 
 }

@@ -11,6 +11,11 @@ public class StringCalculator {
 	private static final String BASIC_DELIMITER = ",|\n";
 	private static final String ANY_LENGTH_DELIMITER_IDENTIFIER = "//[";
 	private static final String CUSTOM_DELIMITER_IDENTIFIER = "//";
+	private static final String CUSTOM_MULTIPLE_DELIMITER_IDENTIFIER = "]\\[";
+	private static final String ESCAPE_CHAR = "\\";
+	private static final int DELIMITER_INDEX = 2;
+	private static final int BRACKET_DELIMITER_INDEX = 3;
+
 	private int count = 0;
 
 	public Integer add(String numbers) {
@@ -37,11 +42,11 @@ public class StringCalculator {
 
 		// delimiter string starts with //[
 		if (delimiterPart.startsWith(ANY_LENGTH_DELIMITER_IDENTIFIER)) {
-			String delimiter = delimiterPart.substring(3, delimiterPart.length() - 1);
-			return Stream.of(delimiter.split("]\\[")).collect(Collectors.joining("|"));
+			String delimiter = delimiterPart.substring(BRACKET_DELIMITER_INDEX, delimiterPart.length() - 1);
+			return Stream.of(delimiter.split(CUSTOM_MULTIPLE_DELIMITER_IDENTIFIER)).collect(Collectors.joining("|"));
 		} else {
 			// delimiter string starts with // only
-			return delimiterPart.substring(2);
+			return delimiterPart.substring(DELIMITER_INDEX);
 		}
 	}
 
@@ -72,7 +77,7 @@ public class StringCalculator {
 	}
 
 	private String[] splitNumberString(String numbers, String delimiter) {
-		return numbers.split("\\" + delimiter);
+		return numbers.split(ESCAPE_CHAR + delimiter);
 	}
 
 	public int getCalledCount() {

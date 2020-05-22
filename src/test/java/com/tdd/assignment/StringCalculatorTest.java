@@ -63,18 +63,18 @@ public class StringCalculatorTest {
 		int result = calculator.add("//'\n-1'-2'-3");
 		assertEquals(result, 6);
 	}
-	
+
 	@Test
 	public void lessThanMaxNumberTest() {
 		int result = calculator.add("//'\n999'1'1");
 		assertEquals(result, 1001);
 	}
-	
+
 	@Test
 	public void moreThanMaxNumberTest() {
 		int result = calculator.add("//'\n1000'1'1");
 		assertEquals(result, 2);
-		
+
 		int result2 = calculator.add("//'\n1000'1000'1000");
 		assertEquals(result2, 0);
 	}
@@ -84,28 +84,28 @@ public class StringCalculatorTest {
 		int result = calculator.add("//;;;\n1;;;2;;;3");
 		assertEquals("Any Length Delimiter Test", result, 6);
 	}
-	
+
 	@Test
 	public void multipleCharSingleDelimiterBracketTest() {
 		int result = calculator.add("//[;;;]\n1;;;2;;;3");
 		assertEquals("Any Length Delimiter Bracke Test", result, 6);
 	}
-	
+
 	@Test
 	public void singleCharMultipleDelimiterTest() {
 		int result = calculator.add("//[.][;]\n1.2;3");
 		assertEquals("Multiple Delimiter Test", result, 6);
 	}
-	
+
 	@Test
 	public void multiCharMultipleDelimiterTest() {
 		int result = calculator.add("//[...][;;;]\n1...2;;;3");
 		assertEquals("Multiple Delimiter Test", result, 6);
-		
+
 		int result2 = calculator.add("//[%%][;;]\n1%%2;;3");
 		assertEquals("Multiple Delimiter Test", result2, 6);
 	}
-	
+
 	@After
 	public void countAddMethodTest() {
 		addMethodCounter += calculator.getCalledCount();
@@ -115,7 +115,5 @@ public class StringCalculatorTest {
 	public static void addInvocationCounter() {
 		System.out.println("The add method was invoked " + addMethodCounter + " time(s).");
 	}
-	
-	
-	
+
 }

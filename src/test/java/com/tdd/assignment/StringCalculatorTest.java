@@ -38,6 +38,13 @@ public class StringCalculatorTest {
 		assertEquals(result2, 133);
 	}
 	
+	@Test
+	public void multipleDelimiter() {
+		StringCalculator calculator = new StringCalculator();
+		int result = calculator.add("1\n2,3");
+		assertEquals(result, 6);
+	}
+	
 	
 
 }

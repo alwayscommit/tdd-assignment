@@ -14,7 +14,7 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void nonEmptyStringTest() {
+	public void singleDigitString() {
 		StringCalculator calculator = new StringCalculator();
 		int result = calculator.add("2");
 		assertEquals(result, 2);

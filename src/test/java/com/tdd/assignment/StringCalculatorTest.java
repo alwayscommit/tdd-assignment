@@ -45,6 +45,14 @@ public class StringCalculatorTest {
 		assertEquals(result, 6);
 	}
 	
+	@Test
+	public void inbuiltDelimiterTest() {
+		StringCalculator calculator = new StringCalculator();
+		int result = calculator.add("//'\n1'2'3");
+		assertEquals(result, 6);
+	}
+	
+	
 	
 
 }

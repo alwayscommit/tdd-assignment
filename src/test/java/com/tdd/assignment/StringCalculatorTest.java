@@ -52,6 +52,13 @@ public class StringCalculatorTest {
 		assertEquals(result, 6);
 	}
 	
+	@Test(expected = UnsupportedOperationException.class)
+	public void negativeNumberTest() {
+		StringCalculator calculator = new StringCalculator();
+		int result = calculator.add("//'\n-1'-2'-3");
+		assertEquals(result, 6);
+	}
+	
 	
 	
 

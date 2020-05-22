@@ -86,15 +86,15 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void anyLengthDelimiterBracketTest() {
+	public void multipleCharSingleDelimiterBracketTest() {
 		int result = calculator.add("//[;;;]\n1;;;2;;;3");
-		assertEquals("Any Length Delimiter Test", result, 6);
+		assertEquals("Any Length Delimiter Bracke Test", result, 6);
 	}
 	
 	@Test
-	public void anyLengthMultipleDelimiterTest() {
+	public void singleCharMultipleDelimiterTest() {
 		int result = calculator.add("//[.][;]\n1.2;3");
-		assertEquals("Any Length Delimiter Test", result, 6);
+		assertEquals("Multiple Delimiter Test", result, 6);
 	}
 	
 	@After

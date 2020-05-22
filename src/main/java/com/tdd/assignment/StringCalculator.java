@@ -1,8 +1,10 @@
 package com.tdd.assignment;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class StringCalculator {
 
@@ -35,7 +37,8 @@ public class StringCalculator {
 
 		// delimiter string starts with //[
 		if (delimiterPart.startsWith(ANY_LENGTH_DELIMITER_IDENTIFIER)) {
-			return delimiterPart.substring(3, delimiterPart.length() - 1);
+			String delimiter = delimiterPart.substring(3, delimiterPart.length() - 1);
+			return Stream.of(delimiter.split("]\\[")).collect(Collectors.joining("|"));
 		} else {
 			// delimiter string starts with // only
 			return delimiterPart.substring(2);

@@ -9,14 +9,14 @@ public class StringCalculatorTest {
 	@Test
 	public void emptyStringTest() {
 		StringCalculator calculator = new StringCalculator();
-		int result = calculator.calculateString("");
+		int result = calculator.add("");
 		assertEquals(result, 0);
 	}
 	
 	@Test
 	public void nonEmptyStringTest() {
 		StringCalculator calculator = new StringCalculator();
-		int result = calculator.calculateString("2");
+		int result = calculator.add("2");
 		assertEquals(result, 2);
 	}
 	

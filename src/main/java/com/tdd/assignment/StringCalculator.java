@@ -2,7 +2,7 @@ package com.tdd.assignment;
 
 public class StringCalculator {
 
-	public Integer calculateString(String numberString) {
+	public Integer add(String numberString) {
 		
 		if(numberString==null || numberString.equals("")) {
 			return 0;

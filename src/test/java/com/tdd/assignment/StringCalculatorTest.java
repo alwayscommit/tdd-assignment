@@ -81,7 +81,7 @@ public class StringCalculatorTest {
 
 	@Test
 	public void anyLengthDelimiterTest() {
-		int result = calculator.add("//...\n1...2...3");
+		int result = calculator.add("//[;;;]\n1;;;2;;;3");
 		assertEquals("Any Length Delimiter Test", result, 6);
 	}
 	
@@ -92,7 +92,7 @@ public class StringCalculatorTest {
 
 	@AfterClass
 	public static void addInvocationCounter() {
-		System.out.println("The add method was invoked " + addMethodCounter + " times.");
+		System.out.println("The add method was invoked " + addMethodCounter + " time(s).");
 	}
 	
 	

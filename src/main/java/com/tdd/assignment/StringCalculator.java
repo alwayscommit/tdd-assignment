@@ -17,7 +17,6 @@ public class StringCalculator {
 
 		// inbuilt delimiter
 		if (hasInbuiltDelimiter(numbers)) {
-
 			// Get Delimiter
 			String[] spaceSplit = numbers.split("\n", 2);
 			String delimiter = spaceSplit[0].substring(2);
@@ -56,7 +55,7 @@ public class StringCalculator {
 	}
 
 	private String[] splitNumberString(String numbers, String delimiter) {
-		return numbers.split(delimiter);
+		return numbers.split("\\"+delimiter);
 	}
 	
 	public int getCalledCount() {

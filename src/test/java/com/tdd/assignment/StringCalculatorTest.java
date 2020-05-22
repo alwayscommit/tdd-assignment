@@ -63,7 +63,13 @@ public class StringCalculatorTest {
 		int result = calculator.add("//'\n-1'-2'-3");
 		assertEquals(result, 6);
 	}
-
+	
+	@Test
+	public void lessThanMaxNumberTest() {
+		int result = calculator.add("//'\n999'1'1");
+		assertEquals(result, 1001);
+	}
+	
 	@After
 	public void countAddMethodTest() {
 		addMethodCounter += calculator.getCalledCount();

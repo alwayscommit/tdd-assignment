@@ -29,24 +29,22 @@ public class StringCalculator {
 
 	}
 
-	private IntStream checkForNegatives(String[] numberStringArray) {
-		String negativeNumbers = getIntegers(numberStringArray).filter(n -> n<0).mapToObj(integer -> Integer.toString(integer)).collect(Collectors.joining(","));
-		if(!negativeNumbers.isEmpty()) {
-			throw new UnsupportedOperationException("negatives not allowed :: " + negativeNumbers);
-		} else {
-			return getIntegers(numberStringArray);
-		}
-	}
-
 	private Integer calculateSum(String numbers, String delimiter) {
 		// split operation
 		String[] numberStringArray = splitNumberString(numbers, delimiter);
 
 		//check for negatives
 		IntStream posIntStream = checkForNegatives(numberStringArray);
+		
+		//ignore number > 1000 
+		IntStream finaIntStream = limitMaxNumber(posIntStream);
 
 		// perform summation
-		return posIntStream.sum();
+		return finaIntStream.sum();
+	}
+
+	private IntStream limitMaxNumber(IntStream posIntStream) {
+		return posIntStream.filter(num -> num < 1000);
 	}
 
 	private boolean hasInbuiltDelimiter(String numbers) {
@@ -63,6 +61,15 @@ public class StringCalculator {
 	
 	public int getCalledCount() {
 		return count;
+	}
+	
+	private IntStream checkForNegatives(String[] numberStringArray) {
+		String negativeNumbers = getIntegers(numberStringArray).filter(n -> n<0).mapToObj(integer -> Integer.toString(integer)).collect(Collectors.joining(","));
+		if(!negativeNumbers.isEmpty()) {
+			throw new UnsupportedOperationException("negatives not allowed :: " + negativeNumbers);
+		} else {
+			return getIntegers(numberStringArray);
+		}
 	}
 
 }

@@ -29,6 +29,15 @@ public class StringCalculatorTest {
 		assertEquals("Adding 12,2 should give 14", result2, 14);
 	}
 	
+	@Test
+	public void multipleDigits() {
+		StringCalculator calculator = new StringCalculator();
+		int result = calculator.add("1,2,3,4,5");
+		assertEquals(result, 15);
+		int result2 = calculator.add("12,22,32,42,25");
+		assertEquals(result2, 133);
+	}
+	
 	
 
 }

@@ -79,6 +79,12 @@ public class StringCalculatorTest {
 		assertEquals(result2, 0);
 	}
 
+	@Test
+	public void anyLengthDelimiterTest() {
+		int result = calculator.add("//...\n1...2...3");
+		assertEquals("Any Length Delimiter Test", result, 6);
+	}
+	
 	@After
 	public void countAddMethodTest() {
 		addMethodCounter += calculator.getCalledCount();
@@ -88,4 +94,7 @@ public class StringCalculatorTest {
 	public static void addInvocationCounter() {
 		System.out.println("The add method was invoked " + addMethodCounter + " times.");
 	}
+	
+	
+	
 }

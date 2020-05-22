@@ -106,6 +106,12 @@ public class StringCalculatorTest {
 		assertEquals("Multiple Delimiter Test", result2, 6);
 	}
 
+	@Test(expected = UnsupportedOperationException.class)
+	public void multiCharMultipleDelimiterNegativeTest() {
+		int result = calculator.add("//[...][;;;]\n1...2;;;-3");
+		assertEquals("Multiple Delimiter Test", result, 6);
+	}
+	
 	@After
 	public void countAddMethodTest() {
 		addMethodCounter += calculator.getCalledCount();

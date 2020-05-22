@@ -1,15 +1,16 @@
 package com.tdd.assignment;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class StringCalculator {
 
 	private static final String BASIC_DELIMITER = ",|\n";
-
+	private int count=0;
+	
 	public Integer add(String numbers) {
+		count++;
 		if (numbers == null || numbers.isEmpty()) {
 			return 0;
 		}
@@ -58,6 +59,10 @@ public class StringCalculator {
 
 	private String[] splitNumberString(String numbers, String delimiter) {
 		return numbers.split(delimiter);
+	}
+	
+	public int getCalledCount() {
+		return count;
 	}
 
 }

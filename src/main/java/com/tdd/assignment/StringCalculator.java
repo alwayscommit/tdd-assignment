@@ -17,24 +17,25 @@ public class StringCalculator {
 
 		// inbuilt delimiter
 		if (hasInbuiltDelimiter(numbers)) {
-
 			String[] spaceSplit = numbers.split("\n", 2);
 			String delimiter = spaceSplit[0].substring(2);
 			numbers = spaceSplit[1];
-			String[] numberStringArray = numbers.split(delimiter);
-			IntStream intStream = getIntegers(numberStringArray);
-			return intStream.sum();
+			return calculateSum(numbers, delimiter);
 		} else {
-			// split operation
-			String[] numberStringArray = splitNumberString(numbers);
-
-			// convert to int operation
-			IntStream intStream = getIntegers(numberStringArray);
-
-			// perform summation
-			return intStream.sum();
+			return calculateSum(numbers, BASIC_DELIMITER);
 		}
 
+	}
+
+	private Integer calculateSum(String numbers, String delimiter) {
+		// split operation
+		String[] numberStringArray = splitNumberString(numbers, delimiter);
+
+		// convert to int operation
+		IntStream intStream = getIntegers(numberStringArray);
+
+		// perform summation
+		return intStream.sum();
 	}
 
 	private boolean hasInbuiltDelimiter(String numbers) {
@@ -45,8 +46,8 @@ public class StringCalculator {
 		return Arrays.stream(numberStringArray).mapToInt(Integer::parseInt);
 	}
 
-	private String[] splitNumberString(String numbers) {
-		return numbers.split(BASIC_DELIMITER);
+	private String[] splitNumberString(String numbers, String delimiter) {
+		return numbers.split(delimiter);
 	}
 
 }

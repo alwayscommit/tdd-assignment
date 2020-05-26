@@ -35,7 +35,7 @@ public class LeapYearKataTest {
 		assertEquals("0/400 case :: ", false, isLeapYear);
 		
 		isLeapYear = leapYearTester.isLeapYear(399);
-		assertEquals("0/400 case :: ", false, isLeapYear);
+		assertEquals("0/399 case :: ", false, isLeapYear);
 	}
 	
 	@Test

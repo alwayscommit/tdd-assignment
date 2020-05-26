@@ -3,6 +3,10 @@ package com.tdd.assignment;
 public class LeapYearKataApp {
 
 	public boolean isLeapYear(int year) {
+		
+		if(year==0) {
+			return false;
+		}
 
 		boolean isLeapYear = isDivisibleBy400(year);
 
@@ -26,14 +30,9 @@ public class LeapYearKataApp {
 	}
 
 	private boolean isDivisibleBy400(int year) {
-
-		if (year < 400) {
-			return false;
-		} else {
-			return (year % 400) == 0;
-		}
+		return (year % 400) == 0;
 	}
-	
+
 	private boolean disibleBy4(int year) {
 		return year % 4 == 0;
 	}

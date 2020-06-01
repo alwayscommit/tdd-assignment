@@ -1,40 +1,38 @@
 package com.tdd.assignment;
 
+import com.tdd.assignment.service.LoggingService;
+
 public class LeapYearKataApp {
 
+	private LoggingService logService;
+	
+	public LeapYearKataApp(LoggingService logService) {
+		this.logService = logService;
+	}
+	
 	public boolean isLeapYear(int year) {
-		
-		if(year==0) {
+
+		if (year == 0) {
 			return false;
 		}
 
-		boolean isLeapYear = isDivisibleBy400(year);
+		boolean isLeapYear = isDivisibleBy(year, 400);
 
 		if (!isLeapYear) {
-			isLeapYear = divisibleBy4ButNot100(year);
+			isLeapYear = isDivisibleBy(year, 4) && !isDivisibleBy(year, 100);
 		}
-
+		logService.log(year);
 		return isLeapYear;
 	}
 
-	private boolean divisibleBy4ButNot100(int year) {
-		if (disibleBy4(year) && notDivisibleBy100(year)) {
+	private boolean isDivisibleBy(int year, int divisor) {
+
+		if (year % divisor == 0) {
 			return true;
 		} else {
 			return false;
 		}
-	}
 
-	private boolean notDivisibleBy100(int year) {
-		return year % 100 != 0;
-	}
-
-	private boolean isDivisibleBy400(int year) {
-		return (year % 400) == 0;
-	}
-
-	private boolean disibleBy4(int year) {
-		return year % 4 == 0;
 	}
 
 }
